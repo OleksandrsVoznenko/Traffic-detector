@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<header id="site-head">
+  <button id="detector-btn">Ieslēgt detektoru</button>
+  <span class="title">
+    Automātiska noteikumu pārkāpumu indetificēšana tiešraide no Youtube
+  </span>
+</header>
+
+<div id="main-grid">
+  <!-- VIDEO -->
+  <section id="video-block">
+    <img id="live"
+         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMBAJiTEJUAAAAASUVORK5CYII="
+         alt="live stream">
+    <p id="yt-link">
+      <a href="https://www.youtube.com/watch?v=1EiC9bvVGnk" target="_blank">
+        Skatīties tiešraidi YouTube
+      </a>
+    </p>
+  </section>
+
+  <!-- pārkāpumi -->
+  <aside id="viol-block">
+    <h2>Pārkāpumi</h2>
+    <ul id="viol-list"></ul>
+  </aside>
+
+  <!-- chart -->
+  <section id="chart-block">
+    <h2>Skaits par pēdējām 7 dienām</h2>
+    <canvas id="viol-chart" height="200"></canvas>
+  </section>
+
+  <!-- komanda -->
+  <section id="team-block">
+    <h2>Mūsu komanda</h2>
+    <p>
+      Armands Rims — <a href="mailto:armands.rims@edu.rtu.lv">armands.rims@edu.rtu.lv</a><br>
+      Lauris Keišs — <a href="mailto:lauris.keiss@edu.rtu.lv">lauris.keiss@edu.rtu.lv</a><br>
+      Oleksandrs Vozņenko — <a href="mailto:oleksandrs.voznenko@edu.rtu.lv">oleksandrs.voznenko@edu.rtu.lv</a><br>
+      Viktorija Jeršova — <a href="mailto:viktorija.jersova@edu.rtu.lv">viktorija.jersova@edu.rtu.lv</a>
+    </p>
+  </section>
+</div>
+
+<!-- modal -->
+<div id="modal" class="hidden">
+  <span id="modal-close">&times;</span>
+  <img id="modal-img" src="#" alt="screenshot">
+  <a id="modal-download" href="#" download>Lejupielādēt</a>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}
